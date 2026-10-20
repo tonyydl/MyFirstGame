@@ -1,0 +1,139 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/battlefield.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/map_view.gd" id="2"]
+[ext_resource type="Theme" path="res://ui/theme.tres" id="3"]
+
+[node name="Battlefield" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("2")
+
+[node name="Route" type="Path2D" parent="Map"]
+
+[node name="Towers" type="Node2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Header" type="Label" parent="HUD"]
+offset_left = 32.0
+offset_top = 24.0
+theme = ExtResource("3")
+theme_override_font_sizes/font_size = 32
+text = "小小守線"
+
+[node name="Caption" type="Label" parent="HUD"]
+offset_left = 34.0
+offset_top = 73.0
+theme = ExtResource("3")
+theme_override_colors/font_color = Color(0.56, 0.71, 0.7, 1)
+theme_override_font_sizes/font_size = 15
+text = "01 / 林間防線     橘色入口 → 綠色基地"
+
+[node name="Sidebar" type="PanelContainer" parent="HUD"]
+offset_left = 912.0
+offset_top = 116.0
+offset_right = 1128.0
+offset_bottom = 676.0
+theme = ExtResource("3")
+
+[node name="Content" type="VBoxContainer" parent="HUD/Sidebar"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.87, 0.7, 1)
+text = "防線狀態"
+
+[node name="HealthLabel" type="Label" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+text = "基地  10 / 10"
+
+[node name="WaveLabel" type="Label" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+text = "波次  0 / 3"
+
+[node name="KillsLabel" type="Label" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+text = "擊退  0"
+
+[node name="Separator" type="HSeparator" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+
+[node name="Status" type="Label" parent="HUD/Sidebar/Content"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "準備好了嗎？\n開始第一波進攻。"
+autowrap_mode = 2
+
+[node name="WaveButton" type="Button" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+text = "開始下一波"
+
+[node name="MenuButton" type="Button" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+text = "返回主選單"
+
+[node name="Hint" type="Label" parent="HUD/Sidebar/Content"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(0.56, 0.69, 0.69, 1)
+theme_override_font_sizes/font_size = 13
+text = "哨塔自動鎖定敵人\n敵人漏過：基地 −1"
+autowrap_mode = 2
+
+[node name="Result" type="Control" parent="HUD"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3")
+
+[node name="Shade" type="ColorRect" parent="HUD/Result"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.015, 0.035, 0.05, 0.88)
+
+[node name="Center" type="CenterContainer" parent="HUD/Result"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="PanelContainer" parent="HUD/Result/Center"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="HUD/Result/Center/Card"]
+layout_mode = 2
+theme_override_constants/separation = 22
+
+[node name="Title" type="Label" parent="HUD/Result/Center/Card/Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "防守成功！"
+horizontal_alignment = 1
+
+[node name="Summary" type="Label" parent="HUD/Result/Center/Card/Content"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="HUD/Result/Center/Card/Content"]
+layout_mode = 2
+text = "再守一次"
+
+[node name="MenuButton" type="Button" parent="HUD/Result/Center/Card/Content"]
+layout_mode = 2
+text = "返回主選單"

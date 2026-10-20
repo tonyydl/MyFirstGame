@@ -1,0 +1,25 @@
+# Godot 4 generated cache (also contains export credentials).
+.godot/
+*.translation
+
+# Local Godot executable, editor settings, previews and validation logs.
+.tools/
+
+# Exported game builds. Keep export_presets.cfg under version control.
+/build/
+/builds/
+/exports/
+
+# Logs and temporary editor files.
+*.log
+*.tmp
+*.swp
+*.swo
+*~
+
+# Operating system metadata.
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Keep source assets, *.gd.uid and *.import files under version control.
